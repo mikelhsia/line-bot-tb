@@ -42,6 +42,7 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, message)
     else:
+        message = TextSendMessage(text=f'My reply is: {event.message.text}')
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
