@@ -13,4 +13,4 @@ def get_weather():
     if r.status_code != 200:
         return f"Request status code: {r.status_code}"
 
-    return f"Result: {r.json()['list'][0]['dt_txt']} is {r.json()['list'][0]['weather'][0]['description']}"
+    return f"{r.json()['list'][0]['dt_txt']} is {r.json()['list'][0]['weather'][0]['main']} with {r.json()['list'][0]['weather'][0]['description']}"
