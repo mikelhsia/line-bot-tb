@@ -13,4 +13,4 @@ def get_weather():
     if r.status_code != 200:
         return f"Request status code: {r.status_code}"
 
-    return 'Result: ' + r.json().list[0]
+    return 'Result: ' + r.json()
