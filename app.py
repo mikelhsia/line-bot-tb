@@ -8,6 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from vendor import openWeatherApi
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -40,10 +42,10 @@ def handle_message(event):
             original_content_url='https://i.imgur.com/XftEQMC.jpg',
             preview_image_url='https://friendoprod.blob.core.windows.net/missionpics/images/4237/member/1bf3b1c2-413c-4454-8f23-965b96f1cc04.jpg'
         )
-        line_bot_api.reply_message(event.reply_token, message)
-    else:
-        message = TextSendMessage(text=f'My reply is: {event.message.text}')
-        line_bot_api.reply_message(event.reply_token, message)
+    elif '天氣' in event.message.text:
+        message = TextSendMessage(text=openWeatherApi.get_weather())
+
+    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
