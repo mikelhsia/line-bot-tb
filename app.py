@@ -53,6 +53,8 @@ def handle_message(event):
         string = event.message.text.split(' ')[1]
         ptt_obj.login_and_fetch(string)
         ptt_obj.logout()
+
+        message = TextSendMessage(text=event.message.text)
     
     elif 'postback' in event.message.text:
         actions1 = []
