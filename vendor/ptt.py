@@ -82,7 +82,7 @@ class PTT_BOT():
             # self.ptt_bot.log('IP: ' + post_info.ip)
             # 在文章列表上的日期
             self.ptt_bot.log('List Date: ' + post_info.list_date)
-            self.ptt_bot.log('地區: ' + post_info.location)
+            # self.ptt_bot.log('地區: ' + post_info.location)
             # Since 0.8.19
             self.ptt_bot.log('文章推文數: ' + post_info.push_number)
 
