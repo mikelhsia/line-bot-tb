@@ -2,8 +2,8 @@ import sys
 from PyPtt import PTT
 
 def ptt_init():
-    ID = 'mikk'
-    PASSWORD = '19811128'
+    PTT_ID = 'mikk'
+    PTT_PASSWORD = '19811128'
 
     ptt_bot = PTT.API(
         language=PTT.i18n.language.CHINESE,
@@ -30,7 +30,7 @@ def ptt_init():
 
     # 登入
     try:
-        ptt_bot.login(ptt_id, password)
+        ptt_bot.login(PTT_ID, PTT_PASSWORD)
     except PTT.exceptions.LoginError:
         ptt_bot.log('登入失敗')
         sys.exit()
