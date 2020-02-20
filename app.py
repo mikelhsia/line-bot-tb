@@ -61,19 +61,19 @@ def handle_message(event):
 
         actions1.append(PostbackAction(label='Buy', data='action=buy&itemid=111', display_text=None, text=None))
         actions1.append(PostbackAction(label='Add to cart', data='action=add&itemid=111', display_text=None, text=None))
-        actions1.append(URIAction(label='View detail', uri='http://example.com/page/111', alt_uri=None))
+        actions1.append(URIAction(label='Go to Google', uri='https://google.com', alt_uri=None))
 
         actions2.append(PostbackAction(label='Buy', data='action=buy&itemid=222', display_text=None, text=None))
         actions2.append(PostbackAction(label='Add to cart', data='action=add&itemid=222', display_text=None, text=None))
-        actions2.append(URIAction(label='View detail', uri='http://example.com/page/222', alt_uri=None))
+        actions2.append(URIAction(label='Go to Baidu', uri='https://baidu.com', alt_uri=None))
 
-        default_action = URIAction(label='View detail', uri='http://example.com/page/123', alt_uri=None)
+        default_action = URIAction(label='View detail', uri='https://wiredcraft.com', alt_uri=None)
 
         cols.append(CarouselColumn(text='Description 1', title='This is menu',
-            thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
+            thumbnail_image_url='https://www.wyzowl.com/wp-content/uploads/2019/09/YouTube-thumbnail-size-guide-best-practices-top-examples.png',
             image_background_color='#FFFFFF', actions=actions1, default_action=default_action))
         cols.append(CarouselColumn(text='Description 2', title='This is menu',
-            thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
+            thumbnail_image_url='https://www.wyzowl.com/wp-content/uploads/2019/09/YouTube-thumbnail-size-guide-best-practices-top-examples.png',
             image_background_color='#000000', actions=actions2, default_action=default_action))
 
         template = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
