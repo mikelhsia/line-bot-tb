@@ -1,6 +1,8 @@
 import sys
 from PyPtt import PTT
 
+ptt_bot = ''
+
 def ptt_init():
     PTT_ID = 'mikk'
     PTT_PASSWORD = '19811128'
