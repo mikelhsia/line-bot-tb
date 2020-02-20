@@ -74,7 +74,7 @@ def handle_message(event):
             image_background_color='#FFFFFF', actions=actions1, default_action=default_action))
         cols.append(CarouselColumn(text='Description 2', title='This is menu',
             thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
-            image_background_color='#000', actions=actions2, default_action=default_action))
+            image_background_color='#000000', actions=actions2, default_action=default_action))
 
         template = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
             image_size='cover')
