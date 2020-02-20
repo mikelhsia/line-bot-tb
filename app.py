@@ -17,6 +17,8 @@ line_bot_api = LineBotApi('/aDdPdXosvKKMcWJ0vXbd0ZOvEyUEn7hzImpBqoxL5aC1VPY3YK3B
 # Channel Secret
 handler = WebhookHandler('074a0a8eaefb181417504c6d0e453178')
 
+ptt_obj = ptt.PTT_BOT()
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -49,7 +51,6 @@ def handle_message(event):
     elif '天氣' in event.message.text:
         message = TextSendMessage(text=openWeatherApi.get_weather())
     elif 'ptt' in event.message.text:
-        ptt_obj = ptt.PTT_BOT()
         string = event.message.text.split(' ')[1]
         ptt_obj.login_and_fetch(string)
         ptt_obj.logout()
