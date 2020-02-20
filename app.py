@@ -59,13 +59,13 @@ def handle_message(event):
         actions2 = []
         cols = []
 
-        actions.append(PostbackAction(label='Buy', data='action=buy&itemid=111', display_text=None, text=None))
-        actions.append(PostbackAction(label='Add to cart', data='action=add&itemid=111', display_text=None, text=None))
-        actions.append(URIAction(label='View detail', uri='http://example.com/page/111', alt_uri=None))
+        actions1.append(PostbackAction(label='Buy', data='action=buy&itemid=111', display_text=None, text=None))
+        actions1.append(PostbackAction(label='Add to cart', data='action=add&itemid=111', display_text=None, text=None))
+        actions1.append(URIAction(label='View detail', uri='http://example.com/page/111', alt_uri=None))
 
-        actions.append(PostbackAction(label='Buy', data='action=buy&itemid=222', display_text=None, text=None))
-        actions.append(PostbackAction(label='Add to cart', data='action=add&itemid=222', display_text=None, text=None))
-        actions.append(URIAction(label='View detail', uri='http://example.com/page/222', alt_uri=None))
+        actions2.append(PostbackAction(label='Buy', data='action=buy&itemid=222', display_text=None, text=None))
+        actions2.append(PostbackAction(label='Add to cart', data='action=add&itemid=222', display_text=None, text=None))
+        actions2.append(URIAction(label='View detail', uri='http://example.com/page/222', alt_uri=None))
 
         default_action = URIAction(label='View detail', uri='http://example.com/page/123', alt_uri=None)
 
