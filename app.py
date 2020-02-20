@@ -8,7 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-from vendor import openWeatherApi
+from vendor import openWeatherApi, ptt
 
 app = Flask(__name__)
 
@@ -53,6 +53,9 @@ def handle_message(event):
         )
     elif '天氣' in event.message.text:
         message = TextSendMessage(text=openWeatherApi.get_weather())
+
+    elif 'ptt' in event.message.text:
+        ptt.ptt_init()
     
     elif 'postback' in event.message.text:
         actions1 = []
