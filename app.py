@@ -55,7 +55,8 @@ def handle_message(event):
         message = TextSendMessage(text=openWeatherApi.get_weather())
 
     elif 'ptt' in event.message.text:
-        ptt.ptt_init()
+        string = event.message.text.split(' ')[0]
+        ptt.ptt_init(string)
     
     elif 'postback' in event.message.text:
         actions1 = []
