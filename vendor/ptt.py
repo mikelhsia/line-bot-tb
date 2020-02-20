@@ -68,7 +68,7 @@ class PTT_BOT():
 
             if not post_info.pass_format_check:
                 self.ptt_bot.log('[不合格式]')
-                return
+                # return
 
             self.ptt_bot.log('Board: ' + post_info.board)
             self.ptt_bot.log('AID: ' + post_info.aid)
