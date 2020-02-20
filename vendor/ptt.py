@@ -44,8 +44,8 @@ def ptt_init(num=1):
     ptt_bot.log('登入成功')
 
     post_info = ptt_bot.get_post(
-        'Sex',
-        post_index=num
+        'VC_Style',
+        post_index=int(num)
     )
 
     if post_info is None:
