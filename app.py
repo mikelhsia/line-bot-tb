@@ -32,11 +32,20 @@ def callback():
         abort(400)
     return 'OK'
 
+@handler.add(PostbackEvent)
+def handle_postback_event(event):
+    print(event.postback.data)
+
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    print(event.message.text)
+
+    print(event)
+    print('-----------------------------')
+    print(MessageEvent)
+
     if 'image' in event.message.text:
         message = ImageSendMessage(
             original_content_url='https://i.imgur.com/XftEQMC.jpg',
@@ -44,6 +53,31 @@ def handle_message(event):
         )
     elif '天氣' in event.message.text:
         message = TextSendMessage(text=openWeatherApi.get_weather())
+    
+    elif 'postback' in event.message.text:
+        actions1 = []
+        actions2 = []
+        cols = []
+
+        actions.append(PostbackAction(label='Buy', data='action=buy&itemid=111', display_text=None, text=None))
+        actions.append(PostbackAction(label='Add to cart', data='action=add&itemid=111', display_text=None, text=None))
+        actions.append(URIAction(label='View detail', uri='http://example.com/page/111', alt_uri=None))
+
+        actions.append(PostbackAction(label='Buy', data='action=buy&itemid=222', display_text=None, text=None))
+        actions.append(PostbackAction(label='Add to cart', data='action=add&itemid=222', display_text=None, text=None))
+        actions.append(URIAction(label='View detail', uri='http://example.com/page/222', alt_uri=None))
+
+        default_action = URIAction(label='View detail', uri='http://example.com/page/123', alt_uri=None)
+
+        cols.append(CarouselColumn(text='Description 1', title='This is menu',
+            thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
+            image_background_color='#FFFFFF', actions=actions1, default_action=default_action))
+        cols.append(CarouselColumn(text='Description 2', title='This is menu',
+            thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
+            image_background_color='#000', actions=actions2, default_action=default_action))
+
+        message = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
+            image_size='cover')
 
     line_bot_api.reply_message(event.reply_token, message)
 
