@@ -1,5 +1,5 @@
 import sys
-from PTTLibrary import PTT
+from PyPtt import PTT
 
 def ptt_init():
     ID = 'mikk'
