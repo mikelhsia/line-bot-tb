@@ -30,6 +30,7 @@ class PTT_BOT():
             # (預設值) 23
             # port=8888
         )
+        self.ptt_bot.logout()
 
     def login_and_fetch(self, num=1):
         # 登入
