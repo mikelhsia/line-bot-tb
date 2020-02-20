@@ -17,6 +17,8 @@ line_bot_api = LineBotApi('/aDdPdXosvKKMcWJ0vXbd0ZOvEyUEn7hzImpBqoxL5aC1VPY3YK3B
 # Channel Secret
 handler = WebhookHandler('074a0a8eaefb181417504c6d0e453178')
 
+ptt.ptt_init()
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -42,10 +44,6 @@ def handle_postback_event(event):
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
 
-    print(event)
-    print('-----------------------------')
-    print(MessageEvent)
-
     if 'image' in event.message.text:
         message = ImageSendMessage(
             original_content_url='https://i.imgur.com/XftEQMC.jpg',
@@ -56,7 +54,8 @@ def handle_message(event):
 
     elif 'ptt' in event.message.text:
         string = event.message.text.split(' ')[1]
-        ptt.ptt_init(string)
+        ptt.login_and_fetch(string)
+        ptt.logout()
     
     elif 'postback' in event.message.text:
         actions1 = []

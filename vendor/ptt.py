@@ -1,7 +1,7 @@
 import sys
 from PyPtt import PTT
 
-def ptt_init(num=1):
+def ptt_init():
     PTT_ID = 'mikk'
     PTT_PASSWORD = '19811128'
 
@@ -28,6 +28,7 @@ def ptt_init(num=1):
         # port=8888
     )
 
+def login_and_fetch(num=1):
     # 登入
     try:
         ptt_bot.login(PTT_ID, PTT_PASSWORD, kick_other_login=False)
@@ -115,5 +116,6 @@ def ptt_init(num=1):
 
     print(f'Total {push_count} Pushs {boo_count} Boo {arrow_count} Arrow')
 
+def logout():
     # 登出
     ptt_bot.logout()
