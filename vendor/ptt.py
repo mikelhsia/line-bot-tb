@@ -1,13 +1,13 @@
 import sys
 from PyPtt import PTT
 
+PTT_ID = 'mikk'
+PTT_PASSWORD = '19811128'
+
 class PTT_BOT():
     ptt_bot = None
 
     def __init__(self):
-        PTT_ID = 'mikk'
-        PTT_PASSWORD = '19811128'
-
         self.ptt_bot = PTT.API(
             language=PTT.i18n.language.CHINESE,
             log_level=PTT.log.level.DEBUG,
