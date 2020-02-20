@@ -86,9 +86,9 @@ class PTT_BOT():
             # Since 0.8.19
             self.ptt_bot.log('文章推文數: ' + post_info.push_number)
 
-            if post_info.unconfirmed:
-                # Since 0.8.30
-                self.ptt_bot.log('待證實文章')
+            # if post_info.unconfirmed:
+            #     # Since 0.8.30
+            #     self.ptt_bot.log('待證實文章')
 
             push_count = 0
             boo_count = 0
