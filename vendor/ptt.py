@@ -78,8 +78,8 @@ class PTT_BOT():
             self.ptt_bot.log('Title: ' + post_info.title)
             self.ptt_bot.log('content: ' + post_info.content)
             self.ptt_bot.log('Money: ' + str(post_info.money))
-            self.ptt_bot.log('URL: ' + post_info.web_url)
-            self.ptt_bot.log('IP: ' + post_info.ip)
+            # self.ptt_bot.log('URL: ' + post_info.web_url)
+            # self.ptt_bot.log('IP: ' + post_info.ip)
             # 在文章列表上的日期
             self.ptt_bot.log('List Date: ' + post_info.list_date)
             self.ptt_bot.log('地區: ' + post_info.location)
@@ -115,6 +115,7 @@ class PTT_BOT():
                 self.ptt_bot.log(buffer)
 
             self.ptt_bot.log(f'Total {push_count} Pushs {boo_count} Boo {arrow_count} Arrow')
+            return post_info.content
 
     def logout(self):
         # 登出
