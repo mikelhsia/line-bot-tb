@@ -76,8 +76,9 @@ def handle_message(event):
             thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wyzowl.com%2Fyoutube-thumbnail-size%2F&psig=AOvVaw0yepNJjwuioY2kEWmgntT8&ust=1582191783109000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiZhe2p3ecCFQAAAAAdAAAAABAD', 
             image_background_color='#000', actions=actions2, default_action=default_action))
 
-        message = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
+        template = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
             image_size='cover')
+        message = TemplateSendMessage(alt_text='Carousel template', template=template)
 
     line_bot_api.reply_message(event.reply_token, message)
 
