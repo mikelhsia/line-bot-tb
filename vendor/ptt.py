@@ -31,19 +31,16 @@ class PTT_BOT():
             # port=8888
         )
 
-    def login_and_fetch(self, num=1):
+    def login_and_fetch(self, num=60):
         # 登入
         try:
             self.ptt_bot.login(PTT_ID, PTT_PASSWORD, kick_other_login=False)
         except PTT.exceptions.LoginError:
             self.ptt_bot.log('登入失敗')
-            sys.exit()
         except PTT.exceptions.WrongIDorPassword:
             self.ptt_bot.log('帳號密碼錯誤')
-            sys.exit()
         except PTT.exceptions.LoginTooOften:
             self.ptt_bot.log('請稍等一下再登入')
-            sys.exit()
 
         self.ptt_bot.log('登入成功')
 
