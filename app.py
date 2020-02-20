@@ -40,7 +40,6 @@ def handle_postback_event(event):
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
 
     if 'image' in event.message.text:
         message = ImageSendMessage(
@@ -49,7 +48,6 @@ def handle_message(event):
         )
     elif '天氣' in event.message.text:
         message = TextSendMessage(text=openWeatherApi.get_weather())
-
     elif 'ptt' in event.message.text:
         ptt_obj = ptt.PTT_BOT()
         string = event.message.text.split(' ')[1]
@@ -81,6 +79,8 @@ def handle_message(event):
         template = CarouselTemplate(columns=cols, image_aspect_ratio='rectangle',
             image_size='cover')
         message = TemplateSendMessage(alt_text='Carousel template', template=template)
+    else:
+        message = TextSendMessage(text=event.message.text)
 
     line_bot_api.reply_message(event.reply_token, message)
 
