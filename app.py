@@ -67,7 +67,7 @@ def handle_message(event):
         actions2.append(PostbackAction(label='Add to cart', data='action=add&itemid=222', display_text=None, text=None))
         actions2.append(URIAction(label='Go to Baidu', uri='https://baidu.com', alt_uri=None))
 
-        default_action = URIAction(label='View detail', uri='https://wiredcraft.com', alt_uri=None)
+        default_action = URIAction(label='View PTT', uri='https://www.ptt.cc/bbs/index.html', alt_uri=None)
 
         cols.append(CarouselColumn(text='Description 1', title='This is menu',
             thumbnail_image_url='https://www.wyzowl.com/wp-content/uploads/2019/09/YouTube-thumbnail-size-guide-best-practices-top-examples.png',
