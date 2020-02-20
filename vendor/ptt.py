@@ -74,7 +74,7 @@ class PTT_BOT():
             self.ptt_bot.log('AID: ' + post_info.aid)
             self.ptt_bot.log('index:' + str(post_info.index))
             self.ptt_bot.log('Author: ' + post_info.author)
-            self.ptt_bot.log('Date: ' + post_info.date)
+            # self.ptt_bot.log('Date: ' + post_info.date)
             self.ptt_bot.log('Title: ' + post_info.title)
             self.ptt_bot.log('content: ' + post_info.content)
             self.ptt_bot.log('Money: ' + str(post_info.money))
