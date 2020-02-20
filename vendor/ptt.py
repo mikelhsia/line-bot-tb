@@ -34,7 +34,8 @@ class PTT_BOT():
     def login_and_fetch(self, num=60):
         # 登入
         try:
-            self.ptt_bot.login(PTT_ID, PTT_PASSWORD, kick_other_login=False)
+            self.ptt_bot.login(PTT_ID, PTT_PASSWORD)
+            # self.ptt_bot.login(PTT_ID, PTT_PASSWORD, kick_other_login=False)
         except PTT.exceptions.LoginError:
             self.ptt_bot.log('登入失敗')
             return
