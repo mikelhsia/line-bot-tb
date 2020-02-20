@@ -44,7 +44,7 @@ class PTT_BOT():
 
         self.ptt_bot.log('登入成功')
 
-        self.post_info = self.ptt_bot.get_post(
+        post_info = self.ptt_bot.get_post(
             'VC_Style',
             post_index=int(num)
         )
