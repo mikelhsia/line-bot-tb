@@ -50,70 +50,68 @@ class PTT_BOT():
         )
 
         if post_info is not None:
-            print(f'Body is {post_info}')
+            if post_info.delete_status != PTT.data_type.post_delete_status.NOT_DELETED:
+                if post_info.delete_status == PTT.data_type.post_delete_status.MODERATOR:
+                    print(f'[板主刪除][{post_info.author}]')
+                elif post_info.delete_status == PTT.data_type.post_delete_status.AUTHOR:
+                    print(f'[作者刪除][{post_info.author}]')
+                elif post_info.delete_status == PTT.data_type.post_delete_status.UNKNOWN:
+                    print(f'[不明刪除]')
+                return
 
-        # if post_info.delete_status != PTT.data_type.post_delete_status.NOT_DELETED:
-        #     if post_info.delete_status == PTT.data_type.post_delete_status.MODERATOR:
-        #         print(f'[板主刪除][{post_info.author}]')
-        #     elif post_info.delete_status == PTT.data_type.post_delete_status.AUTHOR:
-        #         print(f'[作者刪除][{post_info.author}]')
-        #     elif post_info.delete_status == PTT.data_type.post_delete_status.UNKNOWN:
-        #         print(f'[不明刪除]')
-        #     return
+            if post_info.is_lock:
+                print('[鎖文]')
+                sys.exit()
 
-        # if post_info.is_lock:
-        #     print('[鎖文]')
-        #     sys.exit()
+            if not post_info.pass_format_check:
+                print('[不合格式]')
+                sys.exit()
 
-        # if not post_info.pass_format_check:
-        #     print('[不合格式]')
-        #     sys.exit()
+            print('Board: ' + post_info.board)
+            print('AID: ' + post_info.aid)
+            print('index:' + str(post_info.index))
+            print('Author: ' + post_info.author)
+            print('Date: ' + post_info.date)
+            print('Title: ' + post_info.title)
+            print('content: ' + post_info.content)
+            print('Money: ' + str(post_info.money))
+            print('URL: ' + post_info.web_url)
+            print('IP: ' + post_info.ip)
+            # 在文章列表上的日期
+            print('List Date: ' + post_info.list_date)
+            print('地區: ' + post_info.location)
+            # Since 0.8.19
+            print('文章推文數: ' + post_info.push_number)
 
-        # print('Board: ' + post_info.board)
-        # print('AID: ' + post_info.aid)
-        # print('index:' + str(post_info.index))
-        # print('Author: ' + post_info.author)
-        # print('Date: ' + post_info.date)
-        # print('Title: ' + post_info.title)
-        # print('content: ' + post_info.content)
-        # print('Money: ' + str(post_info.money))
-        # print('URL: ' + post_info.web_url)
-        # print('IP: ' + post_info.ip)
-        # # 在文章列表上的日期
-        # print('List Date: ' + post_info.list_date)
-        # print('地區: ' + post_info.location)
-        # # Since 0.8.19
-        # print('文章推文數: ' + post_info.push_number)
+            if post_info.unconfirmed:
+                # Since 0.8.30
+                print('待證實文章')
 
-        # if post_info.unconfirmed:
-        #     # Since 0.8.30
-        #     print('待證實文章')
+            push_count = 0
+            boo_count = 0
+            arrow_count = 0
 
-        # push_count = 0
-        # boo_count = 0
-        # arrow_count = 0
+            for push_info in post_info.push_list:
+                if push_info.type == PTT.data_type.push_type.PUSH:
+                    push_type = '推'
+                    push_count += 1
+                if push_info.type == PTT.data_type.push_type.BOO:
+                    push_type = '噓'
+                    boo_count += 1
+                if push_info.type == PTT.data_type.push_type.ARROW:
+                    push_type = '箭頭'
+                    arrow_count += 1
 
-        # for push_info in post_info.push_list:
-        #     if push_info.type == PTT.data_type.push_type.PUSH:
-        #         push_type = '推'
-        #         push_count += 1
-        #     if push_info.type == PTT.data_type.push_type.BOO:
-        #         push_type = '噓'
-        #         boo_count += 1
-        #     if push_info.type == PTT.data_type.push_type.ARROW:
-        #         push_type = '箭頭'
-        #         arrow_count += 1
+                author = push_info.author
+                content = push_info.content
 
-        #     author = push_info.author
-        #     content = push_info.content
+                buffer = f'{author} 給了一個{push_type} 說 {content}'
+                if push_info.ip is not None:
+                    buffer += f'來自 {push_info.ip}'
+                buffer += f'時間是 {push_info.time}'
+                print(buffer)
 
-        #     buffer = f'{author} 給了一個{push_type} 說 {content}'
-        #     if push_info.ip is not None:
-        #         buffer += f'來自 {push_info.ip}'
-        #     buffer += f'時間是 {push_info.time}'
-        #     print(buffer)
-
-        print(f'Total {push_count} Pushs {boo_count} Boo {arrow_count} Arrow')
+            print(f'Total {push_count} Pushs {boo_count} Boo {arrow_count} Arrow')
 
     def logout(self):
         # 登出
