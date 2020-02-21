@@ -1,5 +1,14 @@
-# Line Bot 教學
+# Current issue
+1. Line 裡面怎麼顯示？
+2. Line 裡面的UX應該怎麼設計？
+3. PTT的內容應該存在哪裡？ -> [line-test-backend](https://github.com/mikelhsia/line-test-backend) 的postgreSQL 
 
+# Additional info
+- [Line API spec](https://developers.line.biz/en/docs/messaging-api/message-types/#message-types)
+- [pyptt Library](https://hackmd.io/@CodingMan/PyPttManual)
+- [Heroku deployment](https://dashboard.heroku.com/apps/line-bot-tb/deploy/github)
+
+## Line Bot 教學
 本教程介紹如何使用 Python LINE Bot SDK 在 Heroku 上架設一個簡單的回話機器人。
 <!--more-->
 如果您想以另一種語言架設範例 bot，請參閱以下  LINE Bot SDK repositories。
